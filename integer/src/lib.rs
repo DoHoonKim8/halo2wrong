@@ -17,7 +17,7 @@ pub use maingate;
 pub use maingate::halo2;
 
 #[cfg(test)]
-use halo2::halo2curves as curves;
+use halo2curves as curves;
 
 /// Chip for integer constaints
 pub mod chip;

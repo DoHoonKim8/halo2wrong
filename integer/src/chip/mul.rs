@@ -21,8 +21,8 @@ impl<W: FieldExt, N: FieldExt, const NUMBER_OF_LIMBS: usize, const BIT_LEN_LIMB:
         let (zero, one) = (N::zero(), N::one());
 
         // Constrain residues
-        let lsh_one = self.rns.left_shifter(1);
-        let lsh_two = self.rns.left_shifter(2);
+        let lsh_one = self.rns.left_shifter(0);
+        let lsh_two = self.rns.left_shifter(0);
         let mut carry = Term::Zero;
 
         for ((t_chunk, r_chunk), v) in t
@@ -351,8 +351,8 @@ impl<W: FieldExt, N: FieldExt, const NUMBER_OF_LIMBS: usize, const BIT_LEN_LIMB:
         }
 
         // Constrain binary part of crt
-        let lsh_one = self.rns.left_shifter(1);
-        let lsh_two = self.rns.left_shifter(2);
+        let lsh_one = self.rns.left_shifter(0);
+        let lsh_two = self.rns.left_shifter(0);
         let mut carry = Term::Zero;
 
         for (i, (t_chunk, v)) in t.chunks(2).zip(residues.iter()).enumerate() {

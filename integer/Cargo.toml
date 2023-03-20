@@ -12,6 +12,7 @@ num-traits = "0.2"
 rand = "0.8"
 group = "0.12"
 subtle = { version = "2.3", default-features = false }
+halo2curves = { git = "https://github.com/DoHoonKim8/halo2curves" }
 
 [dev-dependencies]
 rand_core = { version = "0.6", default-features = false }
