@@ -254,7 +254,7 @@ impl<W: FieldExt, N: FieldExt, const NUMBER_OF_LIMBS: usize, const BIT_LEN_LIMB:
     /// Calculates and builds a [`Rns`] with all its necessary values given
     /// the bit length used for its limbs.
     pub fn construct() -> Self {
-        assert!(NUMBER_OF_LIMBS > 0);
+        assert!(NUMBER_OF_LIMBS > 2);
 
         // Limitation of range chip!
         assert!(BIT_LEN_LIMB % 4 == 0);
@@ -323,12 +323,15 @@ impl<W: FieldExt, N: FieldExt, const NUMBER_OF_LIMBS: usize, const BIT_LEN_LIMB:
             let rhs = &(max_quotient * wrong_modulus + max_remainder);
 
             assert!(binary_modulus > wrong_modulus);
+            assert!(binary_modulus > native_modulus);
 
             assert!(max_remainder > wrong_modulus);
             assert!(max_operand > wrong_modulus);
             assert!(max_quotient > wrong_modulus);
 
             assert!(max_remainder < binary_modulus);
+            assert!(max_operand < binary_modulus);
+            assert!(max_quotient < binary_modulus);
 
             assert!(rhs < crt_modulus);
             assert!(lhs < rhs);
@@ -875,8 +878,8 @@ impl<W: FieldExt, N: FieldExt, const NUMBER_OF_LIMBS: usize, const BIT_LEN_LIMB:
     fn residues(&self, t: &[N; NUMBER_OF_LIMBS]) -> Vec<N> {
         let is_odd = NUMBER_OF_LIMBS & 1 == 1;
         let u_len = (NUMBER_OF_LIMBS + 1) / 2;
-        let lsh1 = self.rns.left_shifter(0);
-        let (rsh1, rsh2) = (self.rns.right_shifter(0), self.rns.right_shifter(0));
+        let lsh1 = self.rns.left_shifter(1);
+        let (rsh1, rsh2) = (self.rns.right_shifter(1), self.rns.right_shifter(2));
 
         let mut carry = N::zero();
         // TODO: use chunks
