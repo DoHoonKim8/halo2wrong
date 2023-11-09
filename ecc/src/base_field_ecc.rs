@@ -441,8 +441,6 @@ mod tests {
     impl<C: CurveAffine> Circuit<C::Scalar> for TestEccAddition<C> {
         type Config = TestCircuitConfig;
         type FloorPlanner = SimpleFloorPlanner;
-        #[cfg(feature = "circuit-params")]
-        type Params = ();
 
         fn without_witnesses(&self) -> Self {
             unimplemented!();
@@ -535,8 +533,6 @@ mod tests {
     impl<C: CurveAffine> Circuit<C::Scalar> for TestEccPublicInput<C> {
         type Config = TestCircuitConfig;
         type FloorPlanner = SimpleFloorPlanner;
-        #[cfg(feature = "circuit-params")]
-        type Params = ();
 
         fn without_witnesses(&self) -> Self {
             unimplemented!();
@@ -632,8 +628,6 @@ mod tests {
     impl<C: CurveAffine> Circuit<C::Scalar> for TestEccMul<C> {
         type Config = TestCircuitConfig;
         type FloorPlanner = SimpleFloorPlanner;
-        #[cfg(feature = "circuit-params")]
-        type Params = ();
 
         fn without_witnesses(&self) -> Self {
             unimplemented!();
@@ -724,8 +718,6 @@ mod tests {
     impl<C: CurveAffine> Circuit<C::Scalar> for TestEccBatchMul<C> {
         type Config = TestCircuitConfig;
         type FloorPlanner = SimpleFloorPlanner;
-        #[cfg(feature = "circuit-params")]
-        type Params = ();
 
         fn without_witnesses(&self) -> Self {
             unimplemented!();
